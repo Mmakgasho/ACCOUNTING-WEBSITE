@@ -1,10 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, Menu, X, MessageCircle } from "lucide-react";
+import { useState } from "react";
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
+    setIsMobileMenuOpen(false); // Close mobile menu after clicking
   };
 
   return (
@@ -46,7 +50,18 @@ const Header = () => {
             <div className="hidden lg:flex items-center space-x-4 text-sm">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-professional-blue" />
-                <span>069 166 4887</span>
+                <span>+27 84 984 4859</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <MessageCircle className="w-4 h-4 text-green-600" />
+                <a 
+                  href="https://wa.me/27849844859" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-green-600 hover:text-green-700 transition-colors"
+                >
+                  WhatsApp
+                </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-professional-blue" />
@@ -59,8 +74,71 @@ const Header = () => {
             >
               Get Quote
             </Button>
+            
+            {/* Mobile menu button */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="md:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
+            </Button>
           </div>
         </div>
+        
+        {/* Mobile menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-sm">
+            <nav className="flex flex-col space-y-4 py-4">
+              <button 
+                onClick={() => scrollToSection('services')}
+                className="text-left px-4 py-2 text-foreground hover:text-primary hover:bg-gray-100 transition-colors"
+              >
+                Services
+              </button>
+              <button 
+                onClick={() => scrollToSection('about')}
+                className="text-left px-4 py-2 text-foreground hover:text-primary hover:bg-gray-100 transition-colors"
+              >
+                About
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className="text-left px-4 py-2 text-foreground hover:text-primary hover:bg-gray-100 transition-colors"
+              >
+                Contact
+              </button>
+              
+              {/* Mobile contact info */}
+              <div className="px-4 py-2 border-t border-border mt-4">
+                <div className="flex items-center space-x-2 text-sm mb-2">
+                  <Phone className="w-4 h-4 text-professional-blue" />
+                  <span>+27 84 984 4859</span>
+                </div>
+                <div className="flex items-center space-x-2 text-sm mb-2">
+                  <MessageCircle className="w-4 h-4 text-green-600" />
+                  <a 
+                    href="https://wa.me/27849844859" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-green-600 hover:text-green-700 transition-colors"
+                  >
+                    WhatsApp
+                  </a>
+                </div>
+                <div className="flex items-center space-x-2 text-sm">
+                  <Mail className="w-4 h-4 text-professional-blue" />
+                  <span className="text-xs">Prestigetaxcompliance@gmail.com</span>
+                </div>
+              </div>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );

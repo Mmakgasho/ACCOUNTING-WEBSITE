@@ -1,4 +1,4 @@
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, MessageCircle } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -38,7 +38,18 @@ const Footer = () => {
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-professional-blue" />
-                <span>069 166 4887</span>
+                <span>+27 84 984 4859</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <MessageCircle className="w-4 h-4 text-green-600" />
+                <a 
+                  href="https://wa.me/27849844859" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-green-600 hover:text-green-700 transition-colors"
+                >
+                  WhatsApp
+                </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-professional-blue" />
@@ -55,7 +66,7 @@ const Footer = () => {
         
         <div className="border-t border-border mt-8 pt-8 text-center">
           <p className="text-sm text-professional-gray">
-            © 2024 Prestige Accounting Tax Compliance. All rights reserved.
+            © 2025 Prestige Accounting Tax Compliance. All rights reserved.
           </p>
         </div>
       </div>
