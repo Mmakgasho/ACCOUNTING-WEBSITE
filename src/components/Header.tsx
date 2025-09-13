@@ -16,12 +16,17 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">P</span>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-foreground">Prestige Accounting</h1>
-              <p className="text-sm text-professional-gray">Tax Compliance</p>
+            <div className="flex flex-col items-center">
+              <img 
+                src="/prestige.jpeg" 
+                alt="Prestige Accounting Logo" 
+                className="w-20 h-20 rounded-lg object-cover mb-1"
+              />
+              <div className="text-center">
+                <h1 className="text-xl font-bold text-foreground">PRESTIGE ACCOUNTING</h1>
+                <p className="text-sm text-professional-gray">&</p>
+                <p className="text-sm text-professional-gray">TAX CONSULTANTS</p>
+              </div>
             </div>
           </div>
           
