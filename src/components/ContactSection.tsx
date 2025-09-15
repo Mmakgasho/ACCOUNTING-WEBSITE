@@ -95,6 +95,84 @@ function renderEmailHtml(title: string, data: { name: string; email: string; pho
 </html>`;
 }
 
+function renderClientEmailHtml(data: { name: string; email: string; phone: string; service: string; message: string; }): string {
+  const { name, email, phone, service, message } = data;
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank you for your inquiry - Prestige Accounting & Tax Consultants</title>
+  <style>
+    body { background-color: #f4f4f7; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; color: #333; }
+    .email-container { max-width: 650px; margin: 20px auto; background-color: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); }
+    .header { text-align: center; margin-bottom: 30px; }
+    .logo { width: 80px; height: 80px; border-radius: 8px; margin: 0 auto 15px; display: block; }
+    .company-name { font-size: 24px; font-weight: bold; color: #2c3e50; margin: 10px 0 5px; }
+    .company-tagline { font-size: 14px; color: #666; margin: 0 0 20px; }
+    .content { line-height: 1.6; margin-bottom: 25px; }
+    .highlight { background-color: #f0f8ff; padding: 15px; border-radius: 8px; border-left: 4px solid #007bff; margin: 20px 0; }
+    .contact-info { background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0; }
+    .footer { text-align: center; font-size: 12px; color: #888; margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px; }
+    .footer-logo { width: 60px; height: 60px; border-radius: 6px; margin: 15px auto; display: block; }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      <img src="https://prestige-accounting.vercel.app/prestige.jpeg" alt="Prestige Accounting Logo" class="logo" />
+      <div class="company-name">PRESTIGE ACCOUNTING</div>
+      <div class="company-tagline">& TAX CONSULTANTS</div>
+    </div>
+
+    <div class="content">
+      <h2 style="color: #2c3e50; margin-bottom: 15px;">Thank You for Your Inquiry!</h2>
+      
+      <p>Dear ${name},</p>
+      
+      <p>Thank you for reaching out to <strong>Prestige Accounting & Tax Consultants</strong>. We have received your inquiry regarding <strong>${service}</strong> and appreciate your interest in our professional accounting services.</p>
+      
+      <div class="highlight">
+        <h3 style="margin-top: 0; color: #007bff;">What happens next?</h3>
+        <ul style="margin: 10px 0; padding-left: 20px;">
+          <li>Our team will review your inquiry within 24 hours</li>
+          <li>We'll contact you to discuss your specific needs</li>
+          <li>We'll provide a customized solution for your accounting requirements</li>
+        </ul>
+      </div>
+      
+      <p>Your message: <em>"${message}"</em></p>
+      
+      <div class="contact-info">
+        <h3 style="margin-top: 0; color: #2c3e50;">Contact Information</h3>
+        <p><strong>📧 Email:</strong> <a href="mailto:Prestigetaxcompliance@gmail.com">Prestigetaxcompliance@gmail.com</a></p>
+        <p><strong>☎️ Phone (Primary):</strong> +27 69 166 4887</p>
+        <p><strong>💬 WhatsApp (Primary):</strong> <a href="https://wa.me/27691664887">Send us a message</a></p>
+        <p><strong>☎️ Phone (Secondary):</strong> +27 84 984 4859</p>
+        <p><strong>💬 WhatsApp (Secondary):</strong> <a href="https://wa.me/27849844859">Send us a message</a></p>
+        <p><strong>🕒 Business Hours:</strong> Monday-Friday: 8:00 AM - 5:00 PM | Saturday: 9:00 AM - 1:00 PM</p>
+      </div>
+      
+      <p>We look forward to helping you with your accounting and tax compliance needs!</p>
+      
+      <p>Best regards,<br>
+      <strong>The Prestige Accounting Team</strong></p>
+    </div>
+
+    <div class="footer">
+      <img src="https://prestige-accounting.vercel.app/prestige.jpeg" alt="Prestige Accounting Logo" class="footer-logo" />
+      <p><strong>Prestige Accounting & Tax Consultants</strong></p>
+      <p>Professional Accounting Services | SARS Registered & Compliant</p>
+      <p style="margin-top: 10px; font-size: 11px; color: #aaa;">
+        This is an automated response. Please do not reply to this email.<br />
+        © 2025 Prestige Accounting & Tax Consultants. All rights reserved.
+      </p>
+    </div>
+  </div>
+</body>
+</html>`;
+}
+
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -129,7 +207,7 @@ const ContactSection = () => {
       subject: `New inquiry: ${safeService}`,
     };
 
-    const clientHtml = renderEmailHtml('📬 Message Received', payload);
+    const clientHtml = renderClientEmailHtml(payload);
     const companyHtml = renderEmailHtml('📬 New Contact Form Submission', payload);
 
     try {
@@ -371,7 +449,36 @@ const ContactSection = () => {
                     <Phone className="w-5 h-5 text-primary-foreground" />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Phone</h4>
+                    <h4 className="font-semibold">Phone (Primary)</h4>
+                    <p className="text-professional-gray">+27 69 166 4887</p>
+                    <p className="text-sm text-professional-gray/70">Available during business hours</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
+                    <MessageCircle className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">WhatsApp (Primary)</h4>
+                    <a 
+                      href="https://wa.me/27691664887" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-green-600 hover:text-green-700 transition-colors"
+                    >
+                      Send Message
+                    </a>
+                    <p className="text-sm text-professional-gray/70">Quick response via WhatsApp</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Phone (Secondary)</h4>
                     <p className="text-professional-gray">+27 84 984 4859</p>
                     <p className="text-sm text-professional-gray/70">Available during business hours</p>
                   </div>
@@ -382,7 +489,7 @@ const ContactSection = () => {
                     <MessageCircle className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold">WhatsApp</h4>
+                    <h4 className="font-semibold">WhatsApp (Secondary)</h4>
                     <a 
                       href="https://wa.me/27849844859" 
                       target="_blank" 
