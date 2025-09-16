@@ -7,12 +7,17 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold">P</span>
-              </div>
-              <div>
-                <h3 className="font-bold text-lg">Prestige Accounting</h3>
-                <p className="text-sm text-professional-gray">Tax Compliance</p>
+              <div className="flex flex-col items-center">
+                <img 
+                  src="/prestige.jpeg" 
+                  alt="Prestige Accounting Logo" 
+                  className="w-12 h-12 rounded-lg object-cover mb-1"
+                />
+                <div className="text-center">
+                  <h3 className="font-bold text-lg">PRESTIGE ACCOUNTING</h3>
+                  <p className="text-sm text-professional-gray">&</p>
+                  <p className="text-sm text-professional-gray">TAX CONSULTANTS</p>
+                </div>
               </div>
             </div>
             <p className="text-professional-gray text-sm">
@@ -38,12 +43,12 @@ const Footer = () => {
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-professional-blue" />
-                <span>+27 84 984 4859</span>
+                <span>+27 69 166 4887 | +27 84 984 4859</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MessageCircle className="w-4 h-4 text-green-600" />
                 <a 
-                  href="https://wa.me/27849844859" 
+                  href="https://wa.me/27691664887" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-green-600 hover:text-green-700 transition-colors"
@@ -66,7 +71,7 @@ const Footer = () => {
         
         <div className="border-t border-border mt-8 pt-8 text-center">
           <p className="text-sm text-professional-gray">
-            © 2025 Prestige Accounting Tax Compliance. All rights reserved.
+            © 2025 Prestige Accounting & Tax Consultants. All rights reserved.
           </p>
         </div>
       </div>
